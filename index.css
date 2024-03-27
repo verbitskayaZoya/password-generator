@@ -1,8 +1,66 @@
+:root {
+    /* BOTH THEMES */
+    --eerieBlack: #1C1C1C;
+    --pickledBluewood: #273549;
+    --whitesmoke: #fff;
+    --mountainMeadow: #10B981;
+
+
+
+    /* DARK THEME */
+    --squidInk: #1F2937;
+    --lightGray: #D5D4D8;
+    --shamrock: #4ADF86;
+    --screamingGreen: #55F991;
+    /* for the underline  */
+    --bluesmth: #2F3E53;
+
+    /* LIGHT THEME */
+    /* for the font color */
+    --peacoat: #2B283A; 
+    --slateGray: #6B7280;
+    --mediumSpringGreen: #5DEF92;
+    --honeydew: #ECFDF5;
+}
+
 body {
     margin: 0 0 0 50px;
     background-color: #1F2937;
+    text-align: center;
 
 }
+
+/* JUST FOR NOW */
+div {
+    margin: 20px;
+}
+
+
+
+
+header div {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* height: 100vh; */
+  }
+
+  label {
+    background: whitesmoke;
+    border: 3px solid #55F991;
+    border-radius: 40px;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+  
+  /* END HERE */
 
 .title {
    width: 354px;
@@ -37,7 +95,7 @@ button {
     color: white;
     font-family: Inter;
     font-size: 16px;
-    padding-top: 9px;
+    /* padding-top: px; */
 }
 
 button::after {
@@ -47,7 +105,8 @@ button::after {
     width: 446px;
     height: 0px;
     border: 1px solid #2F3E53;
-    margin: 35px 0 35px 0;
+    /* margin: 35px 0 35px 0; */
+    margin: 60px 0 35px 0;
 }
 
 .password {
@@ -62,6 +121,69 @@ button::after {
 
 .password__container {
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    justify-content: space-around;
     margin-top: 35px;
 }
+
+
+  .text {
+    cursor: pointer;
+    font-size: 2rem;
+    margin-left: 10px;
+    font-family: 'Righteous', cursive;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+
+  /* WE"LL NEED TO REFACTOR THIS CODE */
+  .toggle-button {
+    position: relative;
+    
+    width: 100px;
+    height: 50px;
+    margin: 0;
+  
+    vertical-align: top;
+  
+    background: #ffffff;
+    border: 1px solid #bbc1e1;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+      
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  
+  .toggle-button::after {
+    content: "";
+    
+    position: absolute;
+    left: 3px;
+    top: 1.5px;
+    
+    width: 45px;
+    height: 45px;
+    background-color: blue;
+    border-radius: 50%;
+    
+    transform: translateX(0);
+    
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  
+  .toggle-button:checked::after {
+    transform: translateX(calc(100% + 3px));
+    background-color: #fff;  
+  }
+  
+  .toggle-button:checked {
+    background-color: blue;
+  }
+  
+ 

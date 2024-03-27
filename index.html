@@ -1,16 +1,43 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
     <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
         <link rel="stylesheet" href="index.css">
+        <title> Generate a random password </title>
     </head>
     <body>
-        <h1 class="title">Generate a <br> <span>random password </span> </h1>
-        <h3 class="subtitle">Never use an insecure password again.</h3>
-        <button id="btn__password">Generate passwords </button>
-        <div class="password__container">
-        <p id="first__password" class="password"></p>
-        <p id="second__password" class="password"></p>
-        </div>
-        <script src="index.js"></script>
+        <div class="container">
+            <header>
+                <input type="checkbox" name="toggle" id="toggle-button" class="toggle-button">
+                <label for="toggle-button" class="text" style="visibility:hidden">Toggle Button</label>
+                <div>
+                    <h1 class="title">Generate a <br> <span>random password </span> </h1>
+                    <h2 class="subtitle">Never use an insecure password again.</h3>
+                </div>
+            </header>
+            
+            <main>
+                <div>
+                <label for="password-length-input"> Type a number between 5 and 15 for your password length: </label>
+                <input type="text" 
+                    id="password-length-input" 
+                    name="password-length" 
+                    onfocus="this.value=' '" 
+                    placeholder="15" 
+                    >
+                </div>
+                <div>
+                    <button id="no-numbers-btn"> No numbers in your password </button>
+                    <button id="no-symbols-btn"> No symbols in your password </button>
+                </div>
+                <button id="btn__password">Generate passwords </button>
+
+                <p id="error-message"> </p>
+                <div class="password__container">
+                    <p id="first__password" class="password"></p>
+                    <p id="second__password" class="password"></p>
+                </div>
+            </main>
+          </div>
+
+        <script src="index.js" type="module"></script>
     </body>
 </html>
