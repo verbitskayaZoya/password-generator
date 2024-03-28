@@ -9,12 +9,15 @@ import { characters, charactersWithoutNumbers,
     const passwordLengthInput = document.getElementById("password-length-input")
     const noNumsBtn = document.getElementById("no-numbers-btn")
     const noSymbBtn = document.getElementById("no-symbols-btn")
+    const toggleBtn = document.getElementById("toggle-button")
+    const body = document.getElementById("body")
     
-    
+    console.log(toggleBtn)
     //--------- GLOBAL VARIABLES -----------------------------------
     let password = " "
     let isNoNumsClicked = false
     let isNoSymbClicked = false
+    let hasDarkTheme = true
     
     //-------- EVENT LISTENERS ---------------------------------------------
     // NO NUMS BTN STATE AND STYLE ON CLICK
@@ -25,6 +28,7 @@ import { characters, charactersWithoutNumbers,
             noNumsBtn.style.backgroundColor = "whitesmoke")
     })
     
+   
     // NO SYMB BTN STATE AND STYLE ON CLICK
     noSymbBtn.addEventListener("click", ()  => {
         isNoSymbClicked ? (isNoSymbClicked  = false,
@@ -33,7 +37,17 @@ import { characters, charactersWithoutNumbers,
                         noSymbBtn.style.backgroundColor = "whitesmoke")
     })
     
-    
+     //---- CHANGE THEME -------------------------------------------------
+    toggleBtn.addEventListener("click", () => {
+        hasDarkTheme ? (hasDarkTheme = false, 
+            body.style.backgroundColor = "whitesmoke",
+            body.style.fontColor = "black")
+            : (hasDarkTheme = true,
+                body.style.backgroundColor = "black",
+                body.style.fontColor = "white")
+    })
+
+
     // COPY TO CLIPBOARD
     firstPassword.addEventListener("click", () => {
         console.log(firstPassword.textContent)
