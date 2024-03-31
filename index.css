@@ -2,7 +2,7 @@
     /* BOTH THEMES */
     --eerieBlack: #1C1C1C;
     --pickledBluewood: #273549;
-    --whitesmoke: #fff;
+    --whitesmoke: #f5f5f5;
     --mountainMeadow: #10B981;
 
 
@@ -23,139 +23,138 @@
     --honeydew: #ECFDF5;
 }
 
+
 body {
-    margin: 0 0 0 50px;
-    background-color: #1F2937;
+    margin: 0;
+    background-color: var(--eerieBlack);
     text-align: center;
-
-}
-
-/* JUST FOR NOW */
-div {
-    margin: 20px;
-}
-
-
-
-
-header div {
-    width: 60%;
-    margin: 0 auto;
+    font-family: Karla, sans-serif;
+    color: var(--whitesmoke);
 }
 
 .container {
-    width: 60%;
-    margin: 0 auto;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* height: 100vh; */
-  }
-
-  label {
-    background: whitesmoke;
-    border: 3px solid #55F991;
-    border-radius: 40px;
-    padding: 5px 10px;
-    margin-right: 10px;
+  width: 600px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--squidInk);
+  position: relative;
 }
-  
-  /* END HERE */
 
+header label {
+  /* I USED THIS FOR ACCESSIBILITY INSTEAD OF VISIBILITY HIDDEN OR DISPLAY NONE, IS IT OKAY? */
+ clip-path: inset(100%);  
+}
+
+header {
+  margin: 100px 0 50px 0;
+}
 .title {
-   width: 354px;
-    height: 80px;
-    font-family: 'Karla';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 40px;
-    letter-spacing: -0.025em;
-    color: #FFFFFF;
+  font-size: 40px;
+  letter-spacing: -0.025em;
 }
 
 h1 span {
-    color: #4ADF86;
+  color: var(--shamrock);
 }
 
-.subtitle {
-    width: 372px;
-    height: 28px;
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 20px;
-    color: #D5D4D8;
+header p {
+  font-size: 18px;
+  text-shadow: 4px 4px 5px var(--shamrock);
 }
+
+.password-length-input {
+  margin: 20px 0 5px 0;
+  width: 70%;
+  border-radius: 10px;
+  border: 1px solid var(--shamrock);
+  padding: 7px;
+}
+
+.btn-container {
+ margin: 20px 0 60px 0;
+}
+  
 
 button {
-    width: 191px;
-    height: 42px;
-    background: #10B981;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
-    color: white;
-    font-family: Inter;
-    font-size: 16px;
-    /* padding-top: px; */
+    width: 200px;
+    height: 50px;
+    background: var(--mountainMeadow);
+    border-radius: 10px;
+    color: inherit;
+    border: none;
+    padding: 15px 0;
 }
 
-button::after {
+#btn-password::after {
     content: '';
     display: block;
     opacity: 0.25; 
-    width: 446px;
-    height: 0px;
-    border: 1px solid #2F3E53;
-    /* margin: 35px 0 35px 0; */
-    margin: 60px 0 35px 0;
+    width: 500px;
+    border: 1px solid var(--lightGray);
+    margin: 60px 0 0 -150px;
+}
+
+
+.password-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
 }
 
 .password {
-    width: 211px;
-    height: 39px;
+    width: 200px;
+    height: 40px;
     background: #273549;
     border-radius: 6px;
-    margin-right: 25px;
     color: #55F991;
-    padding: 9px;
-}
-
-.password__container {
-    display: flex;
-    /* justify-content: flex-start; */
-    justify-content: space-around;
-    margin-top: 35px;
+    padding-top: 10px;
 }
 
 
-  .text {
-    cursor: pointer;
-    font-size: 2rem;
-    margin-left: 10px;
-    font-family: 'Righteous', cursive;
-    color: #fff;
-    font-weight: 600;
+.dark-theme {
+  background-color: var(--squidInk);
+  color: var(--whitesmoke)
+}
+
+.light-theme {
+  background-color: var(--honeydew) ;
+  color: var(--eerieBlack);
+}
+
+
+@media only screen and (min-width: 1000px) {
+  .container {
+    width: 900px;
+    justify-content: center;
+   }
+}
+  /* I WANTED TO USE DISPLAY:FLEX & JUSTIFY-CONTENT: FLEX-END
+  BUT IT DIDN'T PUT THE ELEMENT THERE SO I HAD TO FIX THAT USING POSITION */
+  .toggle-container {
+    position: absolute;
+    top: 0;
+    right: -100px;     
   }
-  
 
   /* WE"LL NEED TO REFACTOR THIS CODE */
   .toggle-button {
     position: relative;
-    
-    width: 100px;
-    height: 50px;
-    margin: 0;
-  
-    vertical-align: top;
-  
+    width: 80px;
+    height: 40px;
+    margin-top: 10px;
+
     background: #ffffff;
     border: 1px solid #bbc1e1;
     border-radius: 30px;
     outline: none;
-    cursor: pointer;
+    cursor: pointer; 
   
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    /* -moz-appearance: none; */
+    /* appearance: none; */
       
     transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
   }
@@ -167,9 +166,9 @@ button::after {
     left: 3px;
     top: 1.5px;
     
-    width: 45px;
-    height: 45px;
-    background-color: blue;
+    width: 35px;
+    height: 35px;
+    background-color: var(--lightGray);
     border-radius: 50%;
     
     transform: translateX(0);
@@ -179,11 +178,11 @@ button::after {
   
   .toggle-button:checked::after {
     transform: translateX(calc(100% + 3px));
-    background-color: #fff;  
+    background-color: var(--squidInk);  
   }
   
   .toggle-button:checked {
-    background-color: blue;
+    background-color: var(--honeydew);
   }
   
  

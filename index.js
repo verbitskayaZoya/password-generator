@@ -2,63 +2,84 @@ import { characters, charactersWithoutNumbers,
     charactersWithoutSymbols, onlyLetters } from "./characters.js"
     
     // ---------- GETTING ELEMENTS -------------------------------
-    let firstPassword = document.getElementById("first__password")
-    let secondPassword = document.getElementById("second__password")
-    const button = document.getElementById("btn__password")
+    const passwordContainer = document.getElementById("password-container")
+    const firstPassword = document.getElementById("first-password")
+    const secondPassword = document.getElementById("second-password")
+    const button = document.getElementById("btn-password")
+    const btnContainer = document.getElementById('btn-container')
     const errorMessage  = document.getElementById("error-message")
     const passwordLengthInput = document.getElementById("password-length-input")
-    const noNumsBtn = document.getElementById("no-numbers-btn")
+    const noNumsBtn = document.getElementById('no-numbers-btn')
     const noSymbBtn = document.getElementById("no-symbols-btn")
     const toggleBtn = document.getElementById("toggle-button")
-    const body = document.getElementById("body")
+    const pageContainer = document.getElementById("page-container")
+    const passwordCopiedMessage = document.getElementById("password-copied-message")
     
-    console.log(toggleBtn)
     //--------- GLOBAL VARIABLES -----------------------------------
     let password = " "
+
+
+
     let isNoNumsClicked = false
     let isNoSymbClicked = false
     let hasDarkTheme = true
     
     //-------- EVENT LISTENERS ---------------------------------------------
     // NO NUMS BTN STATE AND STYLE ON CLICK
-    noNumsBtn.addEventListener("click", () => {
-        isNoNumsClicked ? (isNoNumsClicked  = false,
-            noNumsBtn.style.backgroundColor = "#10B981") // Is there a way to use a CSS variable here instead?
-            : (isNoNumsClicked = true,
-            noNumsBtn.style.backgroundColor = "whitesmoke")
-    })
+    // noNumsBtn.addEventListener("click", () => {
+    //     isNoNumsClicked ? (isNoNumsClicked  = false,
+    //         noNumsBtn.style.backgroundColor = "D5D4D8") // Is there a way to use a CSS variable here instead?
+    //         : (isNoNumsClicked = true,
+    //         noNumsBtn.style.backgroundColor = "#10B981")
+    // })
     
-   
+
+
+    btnContainer.addEventListener("click", (e) => changeBntStyle(e.target))
+
+   function changeBntStyle(btn) {
+    console.log(btn.id)
+        if(btn.id === "no-numbers-btn") {
+            isNoNumsClicked ? (isNoNumsClicked  = false,
+                btn.style.backgroundColor = "D5D4D8") 
+                : (isNoNumsClicked = true,
+                btn.style.backgroundColor = "#10B981")
+        }
+   }
     // NO SYMB BTN STATE AND STYLE ON CLICK
     noSymbBtn.addEventListener("click", ()  => {
         isNoSymbClicked ? (isNoSymbClicked  = false,
-                        noSymbBtn.style.backgroundColor = "#10B981") // Is there a way to use a CSS variable here instead?
+                        noSymbBtn.style.backgroundColor = "D5D4D8") // Is there a way to use a CSS variable here instead?
                         : (isNoSymbClicked = true,
-                        noSymbBtn.style.backgroundColor = "whitesmoke")
+                        noSymbBtn.style.backgroundColor = "#10B981")
     })
     
      //---- CHANGE THEME -------------------------------------------------
     toggleBtn.addEventListener("click", () => {
-        hasDarkTheme ? (hasDarkTheme = false, 
-            body.style.backgroundColor = "whitesmoke",
-            body.style.fontColor = "black")
+        hasDarkTheme ? (hasDarkTheme = false,
+            pageContainer.classList.add("light-theme"),
+            pageContainer.classList.remove("dark-theme") )
             : (hasDarkTheme = true,
-                body.style.backgroundColor = "black",
-                body.style.fontColor = "white")
-    })
+            pageContainer.classList.remove("light-theme"),
+            pageContainer.classList.add("dark-theme"))
+        }
+      
+    )
 
 
     // COPY TO CLIPBOARD
-    firstPassword.addEventListener("click", () => {
-        console.log(firstPassword.textContent)
-        navigator.clipboard.writeText(firstPassword.textContent)
-        alert("Copied the text: " + firstPassword.textContent)
+    function copyToClipboard(element) {
+        navigator.clipboard.writeText(element.textContent)
+        element.textContent ? passwordCopiedMessage.textContent = `Copied`
+            : '' 
+            setTimeout(() => {
+                passwordCopiedMessage.textContent = ''
+            }, 1000);
     }
-    )
     
     // GENERATE PASSWORDS BTN
     button.addEventListener("click", renderPasswords)
-    
+    passwordContainer.addEventListener("click", (e) => copyToClipboard(e.target))
     
     // ------------------- FUNCTIONS DECLARATIONS ------------------------------
     
@@ -107,9 +128,6 @@ import { characters, charactersWithoutNumbers,
         return password
         } catch(err) {
             errorMessage.textContent = `Your input number is not valid because ${err}`
-            errorMessage.style.backgroundColor = "whitesmoke"
-            errorMessage.style.padding = "10px"
-            errorMessage.style.borderRadius = "50px"
         }
     
     }
@@ -117,15 +135,6 @@ import { characters, charactersWithoutNumbers,
     
     
     
-    
-    // stretch goals
-    // ability to set password length through user's input   ----- DONE
-    // add "copy-on-click" feature to clipboard ----- done but needs styling
-    // toggle numbers and symbols on/off -------- functionality done
-    // my idea is to change theme dark or light - in progress (need to learn about :has and custom properties)
-    
-    // to -do -list: 
-    // need to style app
-    // need to refactor code
+
     
     
